@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+       <context:component-scan  base-package="net.xuele.basic.service.timer"/>
+       <!-- 调度工厂 -->
+       <bean id="SpringJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+              <property name="triggers">
+                     <list>
+                            <!--每月奖励发放-->
+                            <ref bean="monthAwardTrigger" />
+                     </list>
+              </property>
+              <property name="autoStartup" value="true" />
+       </bean>
+
+
+       <!-- 触发器 月度奖励-->
+       <bean id="monthAwardTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+              <property name="jobDetail">
+                     <ref bean="awardJobDetail" />
+              </property>
+              <property name="cronExpression">
+                     <!-- 每月1号四点执行 -->
+                     <value>0 0 4 1 * ? *</value>
+
+              </property>
+       </bean>
+       <bean id="awardJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+              <property name="targetObject">
+                     <ref bean="aCCompetitionQuartzService" />
+              </property>
+              <property name="targetMethod">
+                     <value>monthRankAward</value>
+              </property>
+              <property name="concurrent">
+                     <value>false</value>
+              </property>
+       </bean>
+       <bean id="aCCompetitionQuartzService" class="net.xuele.basic.service.timer.MonthAwardTimer"></bean>
+
+
+
+</beans>
