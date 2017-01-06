@@ -31,6 +31,9 @@ public class WisdomcoursewareTest extends BaseServiceTest {
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
+
+        System.out.println(result);
+        System.out.println(result);
     }
 
 
