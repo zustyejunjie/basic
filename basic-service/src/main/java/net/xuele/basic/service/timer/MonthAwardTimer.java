@@ -5,8 +5,8 @@ package net.xuele.basic.service.timer;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-/**定时器执行类
- * Created by yejunjie on 2016/11/8.
+/**
+ * 定时器执行类
  */
 public class MonthAwardTimer {
 

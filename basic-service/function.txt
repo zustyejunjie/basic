@@ -1,0 +1,3 @@
+1：spring 整合junit 单元测试
+2：spring resttemplate调用rest服务  openapi中
+3: spring quartz，通过test调用spring容器，test中sleep一段时间，使容器不会退出关闭。

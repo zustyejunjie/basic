@@ -24,7 +24,7 @@
               </property>
               <property name="cronExpression">
                      <!-- 每月1号四点执行 -->
-                     <value>0 0 4 1 * ? *</value>
+                     <value>0 33 14 * * ?</value>
 
               </property>
        </bean>

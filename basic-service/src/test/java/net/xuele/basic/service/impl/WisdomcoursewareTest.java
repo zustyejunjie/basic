@@ -1,6 +1,6 @@
 package net.xuele.basic.service.impl;
 
-import net.xuele.basic.service.BaseServiceTest;
+import io.netty.channel.rxtx.RxtxChannel;
 import net.xuele.basic.service.TestSupport;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,11 @@ public class WisdomcoursewareTest extends TestSupport {
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
+        try {
+            Thread.sleep(100000);
+        }catch (Exception e){
+
+        }
     }
 
     @Test
