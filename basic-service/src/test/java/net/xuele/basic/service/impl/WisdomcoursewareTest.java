@@ -1,6 +1,5 @@
 package net.xuele.basic.service.impl;
 
-import io.netty.channel.rxtx.RxtxChannel;
 import net.xuele.basic.service.TestSupport;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,7 @@ public class WisdomcoursewareTest extends TestSupport {
         MultiValueMap<String,Object> mm = new LinkedMultiValueMap<>();
         String url = "http://192.168.3.72:8080/openapi";
         String prefix = "/wisdomCourseware/coursewareList";
-        mm.add("unitId","010001001001001001001");
+        mm.add("bookId","010001001001001001001");
         mm.add("userId","1000110002");
         mm.add("schoolId","10001");
         URI uri = getTargetURI(url,prefix,mm);
@@ -79,7 +78,7 @@ public class WisdomcoursewareTest extends TestSupport {
     @Test
     public void studentList(){
         MultiValueMap<String,Object> mm = new LinkedMultiValueMap<>();
-        String url = "http://192.168.3.72:80/openapi";
+        String url = "http://192.168.3.72:8080/openapi";
         String prefix = "/wisdomCourseware/be7aed69424b11e5825844a8421dc7b3/studentList";
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
@@ -89,12 +88,14 @@ public class WisdomcoursewareTest extends TestSupport {
     @Test
     public void bookCoverList(){
         MultiValueMap<String,Object> mm = new LinkedMultiValueMap<>();
-        String url = "http://192.168.3.72:80/openapi";
-        String prefix = "/wisdomBlackboard/1000110002/bookCoverList";
+        String url = "http://192.168.3.72:8080/openapi";
+        String prefix = "/wisdomBlackboard/050009001021100001001/bookCoverList";
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
     }
+
+
 
     @Test
     public void cloudDiskList(){
@@ -104,6 +105,8 @@ public class WisdomcoursewareTest extends TestSupport {
         mm.add("userId","1000110002");
         mm.add("schoolId","10001");
         mm.add("extType","6");
+        mm.add("unitId","010004001002002001001");
+        mm.add("page","1");
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
