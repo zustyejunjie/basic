@@ -9,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用于测试 openapi 在智慧课堂的controller接口
