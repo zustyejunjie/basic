@@ -1,8 +1,12 @@
 package net.xuele.basic.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import net.xuele.basic.service.TestSupport;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -29,16 +33,16 @@ public class WisdomcoursewareTest extends TestSupport {
     @Test
     public void classList(){
         MultiValueMap<String,String> mm = new LinkedMultiValueMap<>();
-        String url = "http://192.168.3.72:8080/openapi";
+        String url = "http://192.168.4.87:80/openapi";
         String prefix = "/wisdomCourseware/1000110002/classList";
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
-        try {
-            Thread.sleep(100000);
-        }catch (Exception e){
-
-        }
+//        try {
+//            Thread.sleep(100000);
+//        }catch (Exception e){
+//
+//        }
     }
 
     @Test
@@ -57,17 +61,28 @@ public class WisdomcoursewareTest extends TestSupport {
     @Test
     public void bookList(){
         MultiValueMap<String,Object> mm = new LinkedMultiValueMap<>();
-        String url = "http://192.168.3.72:8080/openapi";
-        String prefix = "/wisdomCourseware/1000110002/bookList";
-        URI uri = getTargetURI(url,prefix,mm);
-        String result = restTemplate.getForObject(uri, String.class);
-        System.out.println(result);
+        mm.add("userId","1000110002");
+        String url = "http://192.168.4.87:80/openapi/wisdomCourseware/bookList";
+//        String result = restTemplate.postForObject(url, null, String.class, mm);
+//        System.out.println(result);
+
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
+        headers.setContentType(type);
+        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+
+
+        HttpEntity<String> formEntity = new HttpEntity<String>(JSONObject.toJSONString(mm), headers);
+
+        String result = restTemplate.postForObject(url, formEntity, String.class);
     }
 
     @Test
      public void coursewareList(){
         MultiValueMap<String,Object> mm = new LinkedMultiValueMap<>();
-        String url = "http://192.168.3.72:8080/openapi";
+        String url = "http://192.168.4.87:80/openapi";
         String prefix = "/wisdomCourseware/coursewareList";
         mm.add("bookId","010001001001001001001");
         mm.add("userId","1000110002");
@@ -80,7 +95,7 @@ public class WisdomcoursewareTest extends TestSupport {
     @Test
     public void studentList(){
         MultiValueMap<String,Object> mm = new LinkedMultiValueMap<>();
-        String url = "http://192.168.3.72:8080/openapi";
+        String url = "http://192.168.4.87:80/openapi";
         String prefix = "/wisdomCourseware/be7aed69424b11e5825844a8421dc7b3/studentList";
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
