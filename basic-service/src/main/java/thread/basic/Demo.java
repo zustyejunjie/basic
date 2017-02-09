@@ -24,7 +24,6 @@ public class Demo implements Runnable {
                     } catch (InterruptedException e) {
                     }
                     System.out.println("我取票第" + ": " + tickets.getAndDecrement() + " 张票。");
-                    //					tickets--;
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {

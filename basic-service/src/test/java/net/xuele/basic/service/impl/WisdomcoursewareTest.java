@@ -102,13 +102,12 @@ public class WisdomcoursewareTest extends TestSupport {
     @Test
     public void cloudDiskList(){
         MultiValueMap<String,Object> mm = new LinkedMultiValueMap<>();
-        String url = "http://192.168.3.72:8080/openapi";
-        String prefix = "/wisdomBlackboard/cloudDiskList";
+        String url = "http://192.168.201.25:8080/ai";
+        String prefix = "exercises/strength";
         mm.add("userId","1000110002");
-        mm.add("schoolId","10001");
-        mm.add("extType","6");
-        mm.add("unitId","010004001002002001001");
-        mm.add("page","1");
+        mm.add("subjectId","010");
+        mm.add("minCount","6");
+        mm.add("maxCount","10");
         URI uri = getTargetURI(url,prefix,mm);
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
