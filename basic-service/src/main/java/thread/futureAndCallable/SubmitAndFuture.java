@@ -22,11 +22,6 @@ public class SubmitAndFuture {
     // 固定大小的线程池，同时只能接受5个任务
     static ExecutorService mExecutor = Executors.newFixedThreadPool(5);
 
-    /**
-     * 计算价格的任务
-     *
-     * @author hadoop
-     */
     private class QuoteTask implements Callable<BigDecimal> {
         public final double price;
         public final int num;
