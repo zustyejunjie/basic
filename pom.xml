@@ -13,6 +13,7 @@
         <module>basic-persist</module>
         <module>basic-web</module>
         <module>basic-service</module>
+        <module>nettyheartBeat</module>
     </modules>
 
     <properties>

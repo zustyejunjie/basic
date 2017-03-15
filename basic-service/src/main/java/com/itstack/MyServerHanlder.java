@@ -25,7 +25,7 @@ public class MyServerHanlder extends ChannelHandlerAdapter {
         //添加到channelGroup 通道组
         MyChannelHandlerPool.channelGroup.add(ctx.channel());
 
-        //通知您已经链接上客户端
+        //只会通知到连接到他的客户端
         String str = "you have already get server"+" "+ctx.channel().id()+new Date()+" "+ctx.channel().localAddress();
         ctx.writeAndFlush(str);
 
