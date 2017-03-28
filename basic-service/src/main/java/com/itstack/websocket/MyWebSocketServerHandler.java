@@ -81,9 +81,10 @@ public class MyWebSocketServerHandler extends
         TextWebSocketFrame tws = new TextWebSocketFrame(new Date().toString()
                 + ctx.channel().id() + "：" + request+"只有第一个客户端才能接受到该信息");
         // 群发
-//        Global.group.writeAndFlush(tws);
+        Global.group.writeAndFlush(tws);
+
         // 返回【谁发的发给谁】
-//        ctx.channel().writeAndFlush(tws);
+        ctx.channel().writeAndFlush(tws);
 
         //只发送给特定的某一个客户端   或者判断channelId
         Iterator<io.netty.channel.Channel> channelIterator=  Global.group.iterator();
