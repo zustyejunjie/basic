@@ -20,6 +20,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
 import io.netty.util.CharsetUtil;
 
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Created by yejunjie on 2017/3/17.
@@ -32,20 +33,22 @@ public class MyWebSocketServerHandler extends
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // 添加
         Global.group.add(ctx.channel());
-        System.out.println("客户端与服务端连接开启");
+        System.out.println("客户端与服务端连接开启,客户端id为"+ctx.channel().id());
     }
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         // 移除
         Global.group.remove(ctx.channel());
-        System.out.println("客户端与服务端连接关闭");
+        System.out.println("客户端与服务端连接关闭客户端id为"+ctx.channel().id());
     }
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, Object msg)
             throws Exception {
         if (msg instanceof FullHttpRequest) {
+            //创建websocket连接
             handleHttpRequest(ctx, ((FullHttpRequest) msg));
         } else if (msg instanceof WebSocketFrame) {
+            //处理消息
             handlerWebSocketFrame(ctx, (WebSocketFrame) msg);
         }
     }
@@ -76,11 +79,18 @@ public class MyWebSocketServerHandler extends
         String request = ((TextWebSocketFrame) frame).text();
         System.out.println("服务端收到：" + request);
         TextWebSocketFrame tws = new TextWebSocketFrame(new Date().toString()
-                + ctx.channel().id() + "：" + request);
+                + ctx.channel().id() + "：" + request+"只有第一个客户端才能接受到该信息");
         // 群发
-        Global.group.writeAndFlush(tws);
+//        Global.group.writeAndFlush(tws);
         // 返回【谁发的发给谁】
-        // ctx.channel().writeAndFlush(tws);
+//        ctx.channel().writeAndFlush(tws);
+
+        //只发送给特定的某一个客户端   或者判断channelId
+        Iterator<io.netty.channel.Channel> channelIterator=  Global.group.iterator();
+        if(channelIterator.hasNext()){
+            channelIterator.next().writeAndFlush(tws);
+        }
+
     }
     private void handleHttpRequest(ChannelHandlerContext ctx,
                                    FullHttpRequest req) {
