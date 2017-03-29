@@ -1,18 +1,42 @@
 package com.itstack.websocket;
 
+import com.google.common.collect.LinkedHashMultimap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import javax.naming.ldap.HasControls;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by yejunjie on 2017/3/17.
  */
 public class NettyServer {
     public static void main(String[] args) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("aa","bb");
+
+        map.remove("aa");
+
+        LinkedHashMultimap<String,Object> queue = LinkedHashMultimap.create();
+        queue.put("aa","bb");
+        queue.put("aa","cc");
+
+        queue.get("aa");
+
+
+
+
+        map.remove("aa");
 
         new NettyServer().run();
+
+
+
+
     }
 
     public void run(){
