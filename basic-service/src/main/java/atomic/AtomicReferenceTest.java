@@ -4,6 +4,7 @@ package atomic;
  * Created by Administrator on 2017/3/29 0029.
  */
 // AtomicReferenceTest.java的源码
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AtomicReferenceTest {
@@ -21,6 +22,16 @@ public class AtomicReferenceTest {
         Person p3 = (Person)ar.get();
         System.out.println("p3 is "+p3);
         System.out.println("p3.equals(p1)="+p3.equals(p1));
+
+        AtomicBoolean isWriteIdled = new AtomicBoolean(true);
+        Boolean b = isWriteIdled.compareAndSet(true, false);
+
+        Boolean b1 = isWriteIdled.compareAndSet(true, false);
+
+        Boolean b2 = isWriteIdled.compareAndSet(false, false);
+        System.out.println(b);
+        System.out.println(b1);
+        System.out.println(b2);
     }
 }
 

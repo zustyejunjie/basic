@@ -71,7 +71,7 @@ public class ReflectTest {
     public Object test3(Customer o) {
         Object o2 = null;
         try {
-            Class c = o.getClass();
+            Class c = Customer.class;
 
             //通过默认构造方法创建一个新的对象
             o2 = c.getDeclaredConstructor(new Class[] {}).newInstance(
