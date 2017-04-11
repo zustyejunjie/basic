@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>无标题文档</title>
+    <title>信令客户端测试</title>
 </head>
 </head>
 <script type="text/javascript">
@@ -54,7 +54,8 @@
 </script>
 <body>
 <form onSubmit="return false;">
-    <input type = "text" name="message" value="Netty The Sinper"/>
+    <h3>发送的信令内容：</h3>
+    <input type = "text" name="message" value="" style="width: 1024px;height: 300px;"/>
     <br/><br/>
     <input type="button" value="发送 WebSocket 请求消息" onClick="send(this.form.message.value)"/>
     <hr color="blue"/>
