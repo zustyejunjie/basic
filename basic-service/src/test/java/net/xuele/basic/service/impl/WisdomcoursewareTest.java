@@ -4,24 +4,17 @@
 //import net.xuele.basic.service.TestSupport;
 //import org.junit.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpEntity;
-//import org.springframework.http.HttpHeaders;
-//import org.springframework.http.MediaType;
 //import org.springframework.util.LinkedMultiValueMap;
 //import org.springframework.util.MultiValueMap;
-//import org.springframework.web.client.RestTemplate;
-//import org.springframework.web.util.UriComponentsBuilder;
 //
 //import java.net.URI;
-//import java.util.HashMap;
-//import java.util.Map;
 //
 ///**
-// * 用于测试 openapi 在智慧课堂的controller接口
-// * 采用spring restTemplate调用接口
-// * rest模式
-// * Created by yejunjie on 2017/1/6.
-// */
+//* 用于测试 openapi 在智慧课堂的controller接口
+//* 采用spring restTemplate调用接口
+//* rest模式
+//* Created by yejunjie on 2017/1/6.
+//*/
 //@SuppressWarnings("ALL")
 //public class WisdomcoursewareTest extends TestSupport {
 //
