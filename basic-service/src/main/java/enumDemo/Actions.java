@@ -6,8 +6,8 @@ package enumDemo;
 public enum Actions {
 
     insert("insert","m1"),
-    update("insert","m2"),
-    delete("insert","m3");
+    update("update","m2"),
+    delete("delete","m3");
 
     private String action;
     private String method;

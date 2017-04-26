@@ -1,4 +1,4 @@
-package pattern.lister;
+package pattern.pubsub;
 
 /**
  * 观察者

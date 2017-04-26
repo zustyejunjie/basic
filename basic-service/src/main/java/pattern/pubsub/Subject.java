@@ -1,7 +1,4 @@
-package pattern.lister;
-
-import javafx.beans.binding.ObjectExpression;
-import org.omg.CORBA.OBJ_ADAPTER;
+package pattern.pubsub;
 
 /**
  * 主题接口 或者叫 通知接口

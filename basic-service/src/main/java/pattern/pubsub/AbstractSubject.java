@@ -1,4 +1,4 @@
-package pattern.lister;
+package pattern.pubsub;
 
 import java.util.ArrayList;
 import java.util.List;
