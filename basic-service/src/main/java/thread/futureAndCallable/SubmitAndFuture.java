@@ -57,20 +57,20 @@ public class SubmitAndFuture {
 
 
 //        //方式1 submit
-//        List<Future<BigDecimal>> submitFutures = new ArrayList<>();
-//        for (int i = 1; i <= 200; i++) {
-//            submitFutures.add(mExecutor.submit(new SubmitAndFuture.QuoteTask(200, i)));
-//        }
-//
-//        for (Future<BigDecimal> future : submitFutures) {
-//            try {
-//                totalPriceList.add(future.get());
-//            } catch (ExecutionException e) {
-//                e.printStackTrace();
-//            } catch (CancellationException e) {
-//               e.printStackTrace();
-//            }
-//        }
+        List<Future<BigDecimal>> submitFutures = new ArrayList<>();
+        for (int i = 1; i <= 200; i++) {
+            submitFutures.add(mExecutor.submit(new SubmitAndFuture.QuoteTask(200, i)));
+        }
+
+        for (Future<BigDecimal> future : submitFutures) {
+            try {
+                totalPriceList.add(future.get());
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (CancellationException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 
