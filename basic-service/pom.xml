@@ -82,6 +82,13 @@
             <artifactId>spring-test</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+
         <!--内存数据库-->
         <dependency>
             <groupId>com.h2database</groupId>
