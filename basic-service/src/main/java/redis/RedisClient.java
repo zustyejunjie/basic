@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class RedisClient {
@@ -221,4 +222,28 @@ public class RedisClient {
 			}
 		});
 	}
+
+
+	/**
+	 * 设置列表的值
+	 * @param key
+	 * @param val
+	 * @param <T>
+	 */
+	public <T> void lPush(final String key, final T val) {
+		redisTemplate.execute(new RedisCallback<Void>() {
+			public Void doInRedis(RedisConnection connection)
+					throws DataAccessException {
+				RedisSerializer<String> keySerializer = redisTemplate.getKeySerializer();
+				RedisSerializer<T> valueSerializer = redisTemplate.getValueSerializer();
+				byte[] key_ = keySerializer.serialize(key);
+				byte[] value_ = valueSerializer.serialize(val);
+				connection.lPush(key_,value_);
+				return null;
+			}
+		});
+	}
+
+
+
 }

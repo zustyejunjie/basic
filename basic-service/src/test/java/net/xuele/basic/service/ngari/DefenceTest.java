@@ -1,7 +1,9 @@
-package defenceAttack;
+package net.xuele.basic.service.ngari;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import defenceAttack.AuthService;
+import net.xuele.basic.service.TestSupport;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import redis.RedisClient;
 
 import java.util.ArrayList;
@@ -11,35 +13,29 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * Created by Administrator on 2017/4/29 0029.
+ * Created by Administrator on 2017/5/2 0002.
  */
-public class Expired {
+public class DefenceTest extends TestSupport {
 
 
-    public static void main(String[] args) {
+    @Autowired
+    private  RedisClient client;
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring.xml");
-        RedisClient client = applicationContext.getBean("redis",RedisClient.class);
+    @Test
+    public void classList(){
 
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
-
-        client.set("base.auth.isDefence",1);
+        ExecutorService executorService = Executors.newFixedThreadPool(100);
 
         String key = "test.yjj1";
         try {
-
-            /**
-             * 使用有返回值得callable 和 future
-             */
             List<Boolean> results = new ArrayList<>();
             List<Future<Boolean>> futures = new ArrayList<>();
             long start = System.currentTimeMillis();
             //开始任务
-            for(int i=0;i<1;i++){
+            for(int i=0;i<50000;i++){
                 futures.add(executorService.submit(new AuthService(client,key)));
             }
 
-            //等待所有结果
             for(Future<Boolean> future : futures){
                 results.add(future.get());
             }
@@ -60,15 +56,12 @@ public class Expired {
 
             System.out.println("拒绝---------------次数："+w);
 
-
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             executorService.shutdown();
         }
     }
-
-
 
 
 }

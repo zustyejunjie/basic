@@ -95,6 +95,10 @@ public class MyWebSocketServerHandler extends
     }
     private void handleHttpRequest(ChannelHandlerContext ctx,
                                    FullHttpRequest req) {
+
+        /**
+         * 如果不是websocket的请求 返回400 bad request
+         */
         if (!req.getDecoderResult().isSuccess()
                 || (!"websocket".equals(req.headers().get("Upgrade")))) {
             sendHttpResponse(ctx, req, new DefaultFullHttpResponse(
