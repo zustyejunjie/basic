@@ -14,7 +14,7 @@ public class NettyClient {
 
     public static void main(String[] args) {
         try {
-            new NettyClient().connect("192.168.4.87", 7397);
+            new NettyClient().connect("192.168.2.5", 9090);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,6 +42,8 @@ public class NettyClient {
         } finally{
             group.shutdownGracefully();
         }
+
+
 
     }
 }
