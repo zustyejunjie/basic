@@ -15,7 +15,7 @@
     }
 
     if(window.WebSocket){
-        socket = new WebSocket("ws://localhost:7397/wc");
+        socket = new WebSocket("ws://localhost:9090/wc");
 
         socket.onmessage = function(event){
 
@@ -42,22 +42,23 @@
     }
 
     function send(message){
+//        alert(document.getElementById("text").value);
         if(!window.WebSocket){return;}
         if(socket.readyState == WebSocket.OPEN){
-            socket.send(message);
+            socket.send(document.getElementById("text").value);
         }else{
             alert("WebSocket 连接没有建立成功！");
         }
 
     }
-
 </script>
 <body>
 <form onSubmit="return false;">
     <h3>发送的信令内容：</h3>
-    <input type = "text" name="message" value="" style="width: 1024px;height: 300px;"/>
+    <textarea rows="20" cols="145" id="text" ></textarea>
+    <!--<input type = "text" name="message" value="" style="width: 1024px;height: 300px;"/>-->
     <br/><br/>
-    <input type="button" value="发送 WebSocket 请求消息" onClick="send(this.form.message.value)"/>
+    <input type="button" value="发送 WebSocket 请求消息" onClick="send()"/>
     <hr color="blue"/>
     <h3>服务端返回的应答消息</h3>
     <textarea id="responseText" style="width: 1024px;height: 300px;"></textarea>
