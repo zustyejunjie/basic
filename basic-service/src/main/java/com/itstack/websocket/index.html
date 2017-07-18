@@ -15,8 +15,8 @@
     }
 
     if(window.WebSocket){
-        socket = new WebSocket("ws://121.43.175.121:9690/wc");
-//        socket = new WebSocket("ws://127.0.0.1:9090/wc");
+//        socket = new WebSocket("ws://121.43.175.121:9690/wc");
+        socket = new WebSocket("ws://127.0.0.1:9090/wc");
 
         socket.onmessage = function(event){
 
@@ -53,19 +53,21 @@
 
     }
 
-    function userState() {
+    function userState(userId) {
         if(!window.WebSocket){return;}
         if(socket.readyState == WebSocket.OPEN){
-            socket.send(document.getElementById("text").value);
+            var message="{\"topic\":\"userState\",\"userId\":"+userId+"}";
+            socket.send(message);
         }else{
             alert("WebSocket 连接没有建立成功！");
         }
     }
 
-    function userClients() {
+    function userClients(userId) {
         if(!window.WebSocket){return;}
         if(socket.readyState == WebSocket.OPEN){
-            socket.send(document.getElementById("text").value);
+            var message="{\"topic\":\"userClients\",\"userId\":"+userId+"}";
+            socket.send(message);
         }else{
             alert("WebSocket 连接没有建立成功！");
         }
@@ -83,8 +85,8 @@
     <div style="margin-top: 5px">
         <b>输入手机号:</b>
         <input type = "text" name="message" value="" style="width: 115px;height: 17px;"/>
-        <input type="button" value="用户状态" onClick="userState()"/>
-        <input type="button" value="用户连接" onClick="userClients()"/>
+        <input type="button" value="用户状态" onClick="userState(this.form.message.value)"/>
+        <input type="button" value="用户连接" onClick="userClients(this.form.message.value)"/>
     </div>
 
     <hr color="blue"/>
