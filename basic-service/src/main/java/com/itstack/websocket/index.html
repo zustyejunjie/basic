@@ -15,14 +15,15 @@
     }
 
     if(window.WebSocket){
-        socket = new WebSocket("ws://localhost:9090/wc");
+        socket = new WebSocket("ws://121.43.175.121:9690/wc");
+//        socket = new WebSocket("ws://127.0.0.1:9090/wc");
 
         socket.onmessage = function(event){
 
             var ta = document.getElementById('responseText');
             ta.value += event.data+"\r\n";
         };
-        
+
 
         socket.onopen = function(event){
 
@@ -51,6 +52,24 @@
         }
 
     }
+
+    function userState() {
+        if(!window.WebSocket){return;}
+        if(socket.readyState == WebSocket.OPEN){
+            socket.send(document.getElementById("text").value);
+        }else{
+            alert("WebSocket 连接没有建立成功！");
+        }
+    }
+
+    function userClients() {
+        if(!window.WebSocket){return;}
+        if(socket.readyState == WebSocket.OPEN){
+            socket.send(document.getElementById("text").value);
+        }else{
+            alert("WebSocket 连接没有建立成功！");
+        }
+    }
 </script>
 <body>
 <form onSubmit="return false;">
@@ -59,6 +78,15 @@
     <!--<input type = "text" name="message" value="" style="width: 1024px;height: 300px;"/>-->
     <br/><br/>
     <input type="button" value="发送 WebSocket 请求消息" onClick="send()"/>
+
+    <hr color="blue"/>
+    <div style="margin-top: 5px">
+        <b>输入手机号:</b>
+        <input type = "text" name="message" value="" style="width: 115px;height: 17px;"/>
+        <input type="button" value="用户状态" onClick="userState()"/>
+        <input type="button" value="用户连接" onClick="userClients()"/>
+    </div>
+
     <hr color="blue"/>
     <h3>服务端返回的应答消息</h3>
     <textarea id="responseText" style="width: 1024px;height: 300px;"></textarea>
