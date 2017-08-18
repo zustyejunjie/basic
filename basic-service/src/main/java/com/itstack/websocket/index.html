@@ -15,8 +15,11 @@
     }
 
     if(window.WebSocket){
-//        socket = new WebSocket("ws://121.43.175.121:9690/wc");
-        socket = new WebSocket("ws://127.0.0.1:9090/wc");
+        socket = new WebSocket("ws://121.43.188.233:9090/wc");
+//        socket = new WebSocket("ws://127.0.0.1:9090/wc");
+
+
+
 
         socket.onmessage = function(event){
 
@@ -72,6 +75,11 @@
             alert("WebSocket 连接没有建立成功！");
         }
     }
+
+    function clear() {
+        debugger;
+        document.getElementById("responseText").value = "";
+    }
 </script>
 <body>
 <form onSubmit="return false;">
@@ -87,6 +95,7 @@
         <input type = "text" name="message" value="" style="width: 115px;height: 17px;"/>
         <input type="button" value="用户状态" onClick="userState(this.form.message.value)"/>
         <input type="button" value="用户连接" onClick="userClients(this.form.message.value)"/>
+        <!--<input type="button" value="清屏" onClick="clear"/>-->
     </div>
 
     <hr color="blue"/>
