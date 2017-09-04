@@ -15,8 +15,8 @@
     }
 
     if(window.WebSocket){
+//        socket = new WebSocket("ws://121.43.175.121:9290/wc");
         socket = new WebSocket("ws://121.43.188.233:9090/wc");
-//        socket = new WebSocket("ws://127.0.0.1:9090/wc");
 
 
 
@@ -25,6 +25,11 @@
 
             var ta = document.getElementById('responseText');
             ta.value += event.data+"\r\n";
+
+            if(event.data.startsWith('{"topic":"test')){
+                sleep(3000)
+                userClients(23122)
+            }
         };
 
 
@@ -43,6 +48,16 @@
         };
     }else{
         alert("您的浏览器不支持WebSocket协议！");
+    }
+
+    function sleep(numberMillis) {
+        var now = new Date();
+        var exitTime = now.getTime() + numberMillis;
+        while (true) {
+            now = new Date();
+            if (now.getTime() > exitTime)
+                return;
+        }
     }
 
     function send(message){
