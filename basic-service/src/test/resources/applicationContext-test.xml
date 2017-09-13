@@ -11,13 +11,19 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <!--mvc driven-->
     <context:component-scan base-package="net.xuele.basic.service"/>
 
-    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
-        <property name="messageConverters">
-            <list>
-                <bean id="stringConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
-                    <constructor-arg value="UTF-8"/>
-                </bean>
-            </list>
-        </property>
+    <bean name = "student,student2" class="net.xuele.basic.service.impl.Student">
+        <constructor-arg name="name" value="student"/>
     </bean>
+    <bean name = "student3,nnn,nnnn,;qqq,;" class="net.xuele.basic.service.impl.Teacher">
+        <property name="name" value="teacher"/>
+    </bean>
+    <!--<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">-->
+        <!--<property name="messageConverters">-->
+            <!--<list>-->
+                <!--<bean id="stringConverter" class="org.springframework.http.converter.StringHttpMessageConverter">-->
+                    <!--<constructor-arg value="UTF-8"/>-->
+                <!--</bean>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
 </beans>
