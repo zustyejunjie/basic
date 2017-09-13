@@ -8,10 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * 使用aes cbc模式加解密
- * -- 加密
- *	SELECT to_base64(AES_ENCRYPT('www.gowhere.so','jkl;POIU1234++=='));
- *	-- 解密
- *	SELECT AES_DECRYPT(from_base64('Oa1NPBSarXrPH8wqSRhh3g=='),'jkl;POIU1234++==');
+ *
  *
  * Created by yejj on 2017/9/11 0011.
  */

@@ -8,6 +8,10 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
+ *
+ * 使用aes cbc模式加解密  需要key 和 iv两个参数
+ *
+ *
  * Created by yejj on 2017/9/13 0013.
  */
 public class AesEncryptUtil {
