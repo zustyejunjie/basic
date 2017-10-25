@@ -14,8 +14,10 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <bean name = "student,student2" class="net.xuele.basic.service.impl.Student">
         <constructor-arg name="name" value="student"/>
     </bean>
-    <bean name = "student3,nnn,nnnn,;qqq,;" class="net.xuele.basic.service.impl.Teacher">
+    <bean name = "teacher" class="net.xuele.basic.service.impl.Teacher">
         <property name="name" value="teacher"/>
+        <property name="age" value="aaa"/>
+        <property name="cla" value="yes"/>
     </bean>
     <!--<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">-->
         <!--<property name="messageConverters">-->

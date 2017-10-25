@@ -8,7 +8,8 @@ import com.google.common.eventbus.Subscribe;
 public class Event1 {
 
     @Subscribe
-    public void s(String a){
+    public void s(String a) throws Exception{
         System.out.println(a);
+        Thread.sleep(10000);
     }
 }

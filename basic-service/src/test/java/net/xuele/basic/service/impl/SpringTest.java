@@ -13,10 +13,12 @@ public class SpringTest  {
 
     @Test
     public void test1(){
+        //
         BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("applicationContext-test.xml"));
 
+        Teacher student = (Teacher) beanFactory.getBean("teacher");
 
-        Student student = (Student) beanFactory.getBean("student2");
+
 
 
 

@@ -16,7 +16,7 @@
 
     if(window.WebSocket){
 //        socket = new WebSocket("ws://121.43.175.121:9290/wc");
-        socket = new WebSocket("ws://121.43.188.233:9090/wc");
+        socket = new WebSocket("ws://127.0.0.1:9090/wc");
 
 
 
@@ -25,11 +25,6 @@
 
             var ta = document.getElementById('responseText');
             ta.value += event.data+"\r\n";
-
-            if(event.data.startsWith('{"topic":"test')){
-                sleep(3000)
-                userClients(23122)
-            }
         };
 
 
@@ -91,6 +86,18 @@
         }
     }
 
+    function userPing(userId) {
+        if(!window.WebSocket){return;}
+        if(socket.readyState == WebSocket.OPEN){
+            var message="{\"topic\":\"ping\",\"userId\":"+userId+"}";
+            socket.send(message);
+        }else{
+            alert("WebSocket 连接没有建立成功！");
+        }
+    }
+
+
+
     function clear() {
         debugger;
         document.getElementById("responseText").value = "";
@@ -110,6 +117,7 @@
         <input type = "text" name="message" value="" style="width: 115px;height: 17px;"/>
         <input type="button" value="用户状态" onClick="userState(this.form.message.value)"/>
         <input type="button" value="用户连接" onClick="userClients(this.form.message.value)"/>
+        <input type="button" value="ping" onClick="userPing(this.form.message.value)"/>
         <!--<input type="button" value="清屏" onClick="clear"/>-->
     </div>
 
