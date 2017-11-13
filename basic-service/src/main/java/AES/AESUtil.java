@@ -1,5 +1,7 @@
 package AES;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -14,6 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class AESUtil {
 
+    private static final Logger loger = LoggerFactory.getLogger(AESUtil.class);
     // 加密
     public static String Encrypt(String sSrc, String sKey) throws Exception {
         if (sKey == null) {
