@@ -9,8 +9,7 @@ public class Event {
 
     @Subscribe
     public void sub(String message) throws Exception{
-        System.out.println(message);
-        Thread.sleep(10000);
+        System.out.println("3333333333333333333");
     }
 
 }

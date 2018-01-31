@@ -68,13 +68,4 @@ public class DelayedEle implements Delayed {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
-
-
-    class Task implements Runnable{
-        @Override
-        public void run() {
-
-        }
-    }
 }
