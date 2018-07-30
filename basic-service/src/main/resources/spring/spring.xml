@@ -10,6 +10,13 @@
 
 	<context:component-scan base-package="redis.*"/>
 
+	<bean id="userService"
+		  class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl"
+				  value="http://localhost:8080/hessianServer/api/service/userService" />
+		<property name="serviceInterface" value="com.tiantian.hessianserver.service.UserService" />
+	</bean>
+
 	<import resource="spring-redis.xml"></import>
 
 	<bean id="redis" class="redis.RedisClient"></bean>

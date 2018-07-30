@@ -68,20 +68,31 @@ public class AESUtil {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+
+    /**
+     *
+     * @param appKey  需要加密的字符串
+     * @return 返回加密后的密文
+     * @throws Exception
+     */
+    public static String encodeAppKey(String appKey) throws Exception{
         /*
          * 此处使用AES-128-ECB加密模式，key需要为16位。
          */
-        String cKey = "llgrihealthyejjj";
+        String cKey = "nagrihealthapp==";
         // 需要加密的字串
-        String cSrc = "www.gowhere.so";
-        System.out.println(cSrc);
+        System.out.println(appKey);
         // 加密
-        String enString = AESUtil.Encrypt(cSrc, cKey);
+        String enString = AESUtil.Encrypt(appKey, cKey);
         System.out.println("加密后的字串是：" + enString);
 
         // 解密
         String DeString = AESUtil.Decrypt(enString, cKey);
         System.out.println("解密后的字串是：" + DeString);
+        return enString;
+    }
+
+    public static void main(String[] args) throws Exception {
+        encodeAppKey("easygroup#nagri");
     }
 }

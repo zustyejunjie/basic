@@ -20,21 +20,24 @@ public class Test {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring.xml");
 
-        RedisClient client = applicationContext.getBean("redis",RedisClient.class);
 
 
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
 
-        try {
-            for(int i=0;i<20;i++){
-                executorService.submit(new Utils(client));
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            executorService.shutdown();
-        }
+//        RedisClient client = applicationContext.getBean("redis",RedisClient.class);
+//
+//
+//        ExecutorService executorService = Executors.newFixedThreadPool(5);
+//
+//        try {
+//            for(int i=0;i<20;i++){
+//                executorService.submit(new Utils(client));
+//            }
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }finally {
+//            executorService.shutdown();
+//        }
 
 
 
