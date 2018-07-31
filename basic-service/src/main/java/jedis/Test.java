@@ -28,7 +28,6 @@ public class Test {
                 jedis.close();
             }
         } finally {
-            pool.close();
         }
     }
 }
