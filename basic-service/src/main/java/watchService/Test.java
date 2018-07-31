@@ -10,10 +10,6 @@ import java.nio.file.*;
 public class Test {
 
     public static void main(String[] args) {
-
-
-        System.out.println("错误的方法");
-
         final Path path = Paths.get("/Users/yejunjie/project/yjj/basic/basic-service/src/main/resources");
 
         try (WatchService watchService = FileSystems.getDefault().newWatchService()) {
